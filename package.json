@@ -11,6 +11,17 @@
   "license": "ISC",
   "dependencies": {
     "create-react-app": "^4.0.1",
-    "truffle": "^5.1.55"
-  }
+    "truffle": "^5.1.60"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlmendo11/bcda-20_21.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jlmendo11/bcda-20_21/issues"
+  },
+  "homepage": "https://github.com/jlmendo11/bcda-20_21#readme"
 }
