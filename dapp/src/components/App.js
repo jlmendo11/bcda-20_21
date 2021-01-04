@@ -13,6 +13,7 @@ import Evaluaciones from "./Evaluaciones/Evaluaciones";
 import Alumnos from "./Alumnos/Alumnos";
 import Calificaciones from "./Calificaciones/Calificaciones";
 import MisCosas from "./MisCosas/MisCosas";
+import Listados from "./Listados/Listados";
 
 const Navegacion = () => (
     <nav>
@@ -22,6 +23,7 @@ const Navegacion = () => (
             <li><Link to="/alumnos/">Alumnos</Link></li>
             <li><Link to="/calificaciones/">Calificaciones</Link></li>
             <li><Link to="/miscosas/">Mis Cosas</Link></li>
+            <li><Link to="/listados/">Listados</Link></li>
         </ul>
     </nav>
 );
@@ -55,6 +57,9 @@ function App() {
                             </Route>
                             <Route path="/miscosas/">
                                 <MisCosas drizzle={drizzle} drizzleState={drizzleState}/>
+                            </Route>
+                            <Route path="/listados/">
+                                <Listados drizzle={drizzle} drizzleState={drizzleState}/>
                             </Route>
                         </Router>
                     </div>

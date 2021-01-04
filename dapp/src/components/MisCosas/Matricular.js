@@ -9,7 +9,7 @@ const MatricularV3 = ({drizzle, drizzleState}) => <article className="AppMisDato
     <ContractData drizzle={drizzle} drizzleState={drizzleState}
                   contract={"Asignatura"} method={"profesor"} methodArgs={[]}
                   render={addr => {
-                      if (addr == drizzleState.accounts[0]) {
+                      if (addr === drizzleState.accounts[0]) {
                           return <p>"ERES EL PROFE, NO TE PUEDES MATRICULAR"</p>
                       }
                       return <ContractForm drizzle={drizzle} drizzleState={drizzleState}
