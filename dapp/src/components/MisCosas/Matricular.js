@@ -1,10 +1,8 @@
 import {newContextComponents} from "@drizzle/react-components";
 const {ContractData, ContractForm} = newContextComponents;
 
-const Matricular = ({drizzle, drizzleState}) => <MatricularV3  drizzle={drizzle} drizzleState={drizzleState} />
-
-
-const MatricularV3 = ({drizzle, drizzleState}) => <article className="AppMisDatos">
+const Matricular = ({drizzle, drizzleState}) => <article className="AppMisDatos">
+    
     <h3>Matricular</h3>
     <ContractData drizzle={drizzle} drizzleState={drizzleState}
                   contract={"Asignatura"} method={"profesor"} methodArgs={[]}

@@ -41,12 +41,15 @@ export default class ListadosEvaluacion extends React.Component {
         contract={"Asignatura"}
         method={"calificaciones"}
         methodArgs={[matricula, this.props.evaluacionCorrectaIndice]}
-        render={nota => 
+        render={nota => {
+                          if(nota) {
                             <p>{matricula} (Nota:
                                                   {nota.tipo === "0" ? "N.P." : ""}
                                                   {nota.tipo === "1" ? (nota.calificacion / 10).toFixed(1) : ""}
                                                   {nota.tipo === "2" ? (nota.calificacion / 10).toFixed(1) + "(M.H.)" : ""}
                             )</p>
+                          }
+        }
                         
         }
       />);

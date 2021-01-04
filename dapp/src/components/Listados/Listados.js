@@ -1,8 +1,6 @@
-import {newContextComponents} from "@drizzle/react-components";
 
 import ListadosForm from "./ListadosForm";
 
-const {ContractData} = newContextComponents;
 
 const Listados = (props) => (
     <section className="AppListados">
