@@ -1,4 +1,7 @@
 import {newContextComponents} from "@drizzle/react-components";
+
+import MatricularNoProfe from './MatricularNoProfe';
+
 const {ContractData, ContractForm} = newContextComponents;
 
 const Matricular = ({drizzle, drizzleState}) => <article className="AppMisDatos">
@@ -10,10 +13,7 @@ const Matricular = ({drizzle, drizzleState}) => <article className="AppMisDatos"
                       if (addr === drizzleState.accounts[0]) {
                           return <p>"ERES EL PROFE, NO TE PUEDES MATRICULAR"</p>
                       }
-                      return <ContractForm drizzle={drizzle} drizzleState={drizzleState}
-                                           contract="Asignatura" method="automatricula"
-                                           labels={["Nombre y Apellidos", "Correo Electronico"]}
-                      />
+                      return <MatricularNoProfe drizzle={drizzle} drizzleState={drizzleState}/>  
                   }}
     />
 </article>
