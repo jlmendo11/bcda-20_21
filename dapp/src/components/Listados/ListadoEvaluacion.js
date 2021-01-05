@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {newContextComponents} from "@drizzle/react-components";
+import ListadoRow from './ListadoRow'
 
 export default class ListadosEvaluacion extends React.Component {
   constructor(props) {
@@ -14,8 +14,6 @@ export default class ListadosEvaluacion extends React.Component {
   }
   
   render() {
-    const {ContractData} = newContextComponents;
-
     let matriculasLength;
     let matriculas = [];
 
@@ -26,36 +24,25 @@ export default class ListadosEvaluacion extends React.Component {
         matriculasLength = ml ? ml.value : 0;
 
         for (let i = 0; i < this.state.matriculasKeys.length; i++) {
-            const eva = Asignatura.matriculas[this.state.matriculasKeys[i]];
-            matriculas[i] = eva ? eva.value : {nombre: "??", fecha: 0, puntos: 0};
+            const mat = Asignatura.matriculas[this.state.matriculasKeys[i]];
+            matriculas[i] = mat ? mat.value : "??";
         }
     }
 
-    // Añadimos solo los que tengan nota
+    // Añadimos solo los que tengan nota distinta a N.P.
     let rows = [];
     matriculas.forEach((matricula, indice) => {
-      console.log('La matricula con indice = ' + indice + ' tiene el address = ' + matricula + ' vamos a ver si tiene nota en ' + this.props.evaluacionCorrectaIndice);
-      rows.push(<ContractData
-        drizzle={this.props.drizzle}
-        drizzleState={this.props.drizzleState}
-        contract={"Asignatura"}
-        method={"calificaciones"}
-        methodArgs={[matricula, this.props.evaluacionCorrectaIndice]}
-        render={nota => {
-                          if(nota) {
-                            <p>{matricula} (Nota:
-                                                  {nota.tipo === "0" ? "N.P." : ""}
-                                                  {nota.tipo === "1" ? (nota.calificacion / 10).toFixed(1) : ""}
-                                                  {nota.tipo === "2" ? (nota.calificacion / 10).toFixed(1) + "(M.H.)" : ""}
-                            )</p>
-                          }
-        }
-                        
-        }
-      />);
+      if(matricula !== "??"){
+        rows.push(<ListadoRow drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} 
+          evaluacionCorrectaIndice={this.props.evaluacionCorrectaIndice} matricula={matricula} />);
+      }
     });
 
-    return <div>{rows || <p>NO SE HA ENCONTRADO NINGUNO</p>}</div>
+    rows = (rows) ? rows : "NO SE HA ENCONTRADO NADIE AÚN";
+
+    console.log(rows);
+
+    return <div>{rows}</div>
 
   }
 

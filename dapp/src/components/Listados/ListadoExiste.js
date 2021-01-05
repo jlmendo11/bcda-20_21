@@ -39,20 +39,21 @@ export default class ListadoExiste extends React.Component {
       }
     });
 
-    // Significa que no hemos encontrado ninguna evaluacion por ese nombre
     if(evaluacionCorrectaIndice === -1){
+      // Significa que no hemos encontrado ninguna evaluacion por ese nombre
       return <div>
         <h2>Listado de la evaluacion: {this.props.submittedEvaluation}, buscando en un total de {this.props.matriculasLength} matriculados</h2>
         <p>No hemos podido encontrar la evaluacion de nombre {this.props.submittedEvaluation}</p>
       </div>
     }
-
-    // Si llegamos hasta aquí, es que la evaluación si que existe y tiene indice = evaluacionCorrectaIndice
-    return <div>
-      <h2>Listado de la evaluacion: {this.props.submittedEvaluation}, buscando en un total de {this.props.matriculasLength} matriculados</h2>
-      <ListadoEvaluacion drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} 
-                         evaluacionCorrectaIndice={evaluacionCorrectaIndice} matriculasLength={this.props.matriculasLength}/>
-  </div>
+    else {
+      // Si llegamos hasta aquí, es que la evaluación si que existe y tiene indice = evaluacionCorrectaIndice
+      return <div>
+        <h2>Listado de la evaluacion: {this.props.submittedEvaluation}, buscando en un total de {this.props.matriculasLength} matriculados</h2>
+        <ListadoEvaluacion drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} 
+                          evaluacionCorrectaIndice={evaluacionCorrectaIndice} matriculasLength={this.props.matriculasLength}/>
+      </div>
+    }
   }
 
   componentDidMount() {

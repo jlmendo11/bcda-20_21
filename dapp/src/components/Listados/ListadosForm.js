@@ -9,20 +9,21 @@ import ListadoExiste from './ListadoExiste'
 export default class ListadosForm extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {inputValue: '', submittedEvaluation: ''};
+      this.state = {inputValue: '', submittedEvaluation: '', buttonValue: "Buscar", searching: false};
   
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
     handleChange(event) {
-      this.setState({inputValue: event.target.value, submittedEvaluation: this.state.submittedEvaluation});
+      this.setState({inputValue: event.target.value, submittedEvaluation: this.state.submittedEvaluation, buttonValue: this.state.buttonValue});
     }
   
     handleSubmit(event) {
       event.preventDefault();
-      this.setState({inputValue: this.state.inputValue, submittedEvaluation: this.state.inputValue})
-
+      let buttonValue = (this.state.searching) ? "Buscar" : "Reset";
+      let searching = !this.state.searching;
+      this.setState({inputValue: this.state.inputValue, submittedEvaluation: this.state.inputValue, buttonValue: buttonValue, searching: searching});
     }
 
     render() {
@@ -35,9 +36,9 @@ export default class ListadosForm extends React.Component {
               Nombre de la evaluacion (ejemplo: Examen Final):
               <input type="text" value={this.state.inputValue} onChange={this.handleChange} />
             </label>
-            <input type="submit" value="Buscar" />
+            <input type="submit" value={this.state.buttonValue} />
           </form>
-          {this.state.submittedEvaluation && 
+          {this.state.searching && 
                   <ContractData
                     drizzle={this.props.drizzle}
                     drizzleState={this.props.drizzleState}
